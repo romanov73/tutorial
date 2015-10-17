@@ -1,0 +1,72 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%This is My own package. <by Innokenti Semoushin>%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{demopack}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%begin *Параметры, задаваемые РИО УлГТУ%%%%%%%%%%%%%%%%%
+%%%Vertical unit lenghts: сверху=21мм, снизу=25.4мм                  %%%
+\voffset=-9pt          %OK!!=0mm.                                     %%%
+\hoffset=-9pt          
+\topmargin=-41pt      %OK!!=-22pt=-7.76мм.                           %%%
+\headheight=17pt      %OK!!=17pt=6mm.                                %%%
+\headsep=20pt         %OK!!=20pt=7mm.                                %%%
+\textheight=699pt     %OK!!=699pt=247мм.                             %%%
+\footskip=28pt        %OK!!=28pt=9.88mm=~10mm.                       %%%
+%%%Horizontal unit lenghts: ширина текста=164мм.                     %%%
+\textwidth=470pt      %OK!!=470pt=166мм.                             %%%
+%%%Odd numbered (right-hand) pages:                                  %%%
+%%%слеваНеч№=25мм, справаНеч№=21мм.                                  %%%
+\oddsidemargin=0pt %OK!!=0mm.                                        %%%
+%%%Even numbered (left-hand) pages:                                  %%%
+%%%слеваЧет№=21мм, справаЧет№=25мм.                                  %%%
+\evensidemargin=0pt  %OK!!=-10pt=-28.3мм.                          %%%
+%%%%%%%%%%%%%%%%%%%end *Параметры, задаваемые РИО%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%set by Julia Tsyganova:%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsthm}           % теоремы AMS                          %%%
+% основные окружения типа теорема                                    %%%
+\theoremstyle{plain}                                                 %%%
+\newtheorem{proposition}{Предложение}[section]                       %%%
+\newtheorem{lemma}{Лемма}[section]                                   %%%
+\theoremstyle{definition}                                            %%%
+\newtheorem{definition}{Определение}[section]                        %%%
+\newtheorem{theorem}{Теорема}[section]                               %%%
+\theoremstyle{remark}                                                %%%
+\newtheorem{remark}{Замечание}[section]                              %%%
+\newtheorem{example}{Пример}[section]                                %%%
+%!%\renewcommand{\contentsname}{Содержание}                          %%%
+\newcommand{\res}{\mathop{\mathrm{res}}\limits}                      %%%
+\unitlength=1mm                                                      %%%
+\emergencystretch=5pt                                                %%%
+%\renewcommand{\baselinestretch}{1.3} % полуторный интервал           %%%
+%%%\parindent=1.25cm                                                 %%%
+\righthyphenmin=2                                                    %%%
+\lefthyphenmin=2                                                     %%%
+\sloppy                                                              %%%
+%\newcommand{\displaystyle}{\ds}                                     %%%
+\newcommand{\vp}{\vphantom{{\dfrac{\mathstrut}{\mathstrut}}^2}}      %%%
+\newlength{\taskskip}                                                %%%
+\setlength{\taskskip}{0.5cm}                                         %%%
+\newcommand{\vtskip}{\vspace{\taskskip}}                             %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%    Changing standard Bibliography heading added by Semoushin:    %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%***ВНИМАНИЕ***%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%\renewcommand{\bibname}{Библиографический список} - This command%%%
+%%%                                          must be put in ANY PLACE%%%
+%%%AFTER the \begin{document} command.!!!In your own .sty package, it%%%
+%%%                                                    does not work!%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\@biblabel}[1]{#1.\hfill} %%%Номера в списке литературы%%%
+%%%                                                без [] и с точкой.%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%   Сaption redefininition for "figure" and "table" environments   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newsavebox{\tempbox}                                                %%%
+\renewcommand{\@makecaption}[2]{\vspace{10pt}%%%                     %%%
+\sbox{\tempbox}{#1. #2}%%%                                           %%%
+\ifthenelse{\lengthtest{\wd\tempbox > \linewidth}}%%%                %%%
+{\begin{center}\begin{tabular}{@{}p{0.95\linewidth}@{}}{#1.   %%%%%%%%%%
+#2}\end{tabular}\par\end{center}}%<--If Caption is more than one line%%%
+%%%{ #1. #2\par }%<--Caption is more than one line(a simpler version)%%%
+{\begin{center}#1. #2\end{center}}%<--If Caption equals one line     %%%
+}%%%                                                                 %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
